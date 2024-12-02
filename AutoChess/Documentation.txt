@@ -1,0 +1,58 @@
+Game Overview
+The game is a roguelike auto-chess application where the player battles against predefined opponents using strategic piece placement and tactical decision-making. The game is designed in a similar style to Balatro, with a focus on resource management and progression through increasingly challenging battles.
+
+Key Features
+Budget System:
+
+Players start each round with a limited budget.
+Budget is used to purchase chess pieces for placement on the board.
+Joker Bonuses:
+
+Players have access to three joker slots.
+Each slot provides unique bonuses, such as:
+Extra budget.
+Free chess pieces (e.g., a rook) after the opponent's position is revealed.
+Tactical advantages during gameplay.
+Chess Engine Integration:
+
+Two instances of an open-source chess engine will simulate the battle.
+Engines have distinct configurations (e.g., maximum search depth).
+Players and opponents position their pieces before simulation begins.
+Progression System:
+
+The player progresses by defeating a series of predefined enemies.
+Each victory increases difficulty (e.g., stronger opponents, limited budget).
+Game Objective:
+
+Defeat all opponents to complete the roguelike campaign.
+Game Flow
+Preparation Phase:
+
+Player is presented with the budget and joker options.
+Pieces can be purchased and placed on the board.
+Reveal Phase:
+
+Opponent's position is revealed after the player finalizes their setup.
+Battle Phase:
+
+Two instances of the chess engine simulate the game.
+The battle outcome determines progression or retry.
+Victory or Defeat:
+
+If victorious, the player moves to the next challenge.
+If defeated, the player retries the battle or restarts the campaign.
+Technical Specifications
+Frontend:
+
+Developed using WPF for a visually appealing and interactive UI.
+Board visualization to show player and opponent setups.
+Intuitive controls for purchasing and placing pieces.
+Backend:
+
+Integration with an open-source chess engine (e.g., Stockfish, Fairy-Stockfish) modified for game mechanics.
+Algorithms for managing budgets, joker effects, and progression.
+Game Logic:
+
+Configurable opponent setups.
+Engine-based simulation for unbiased and strategic outcomes.
+Customizable game rules for roguelike progression.

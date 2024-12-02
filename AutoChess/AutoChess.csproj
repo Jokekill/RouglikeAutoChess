@@ -1,0 +1,50 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net9.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Images\BBishop.png" />
+    <None Remove="Images\BKing.png" />
+    <None Remove="Images\BKnight.png" />
+    <None Remove="Images\BNight.png" />
+    <None Remove="Images\BPawn.png" />
+    <None Remove="Images\BQueen.png" />
+    <None Remove="Images\BRook.png" />
+    <None Remove="Images\WBishop.png" />
+    <None Remove="Images\WKing.png" />
+    <None Remove="Images\WKnight.png" />
+    <None Remove="Images\WNight.png" />
+    <None Remove="Images\WPawn.png" />
+    <None Remove="Images\WQueen.png" />
+    <None Remove="Images\WRook.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Images\BNight.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Images\BBishop.png" />
+    <Resource Include="Images\BKing.png" />
+    <Resource Include="Images\BPawn.png" />
+    <Resource Include="Images\BQueen.png" />
+    <Resource Include="Images\BRook.png" />
+    <Resource Include="Images\WBishop.png" />
+    <Resource Include="Images\WKing.png" />
+    <Resource Include="Images\WNight.png" />
+    <Resource Include="Images\WPawn.png" />
+    <Resource Include="Images\WQueen.png" />
+    <Resource Include="Images\WRook.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Oponents\" />
+  </ItemGroup>
+
+</Project>
