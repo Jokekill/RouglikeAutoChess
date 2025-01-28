@@ -5,6 +5,8 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Threading;
 
 namespace AutoChess
 {
@@ -16,7 +18,11 @@ namespace AutoChess
         private StreamReader stockfishOutput;
 
         public Action RefreshBoardCallback { get; set; }
+        public Action<string> RoundOverCallback { get; set; }
+
         public Action<int, int, int, int> HighlightMoveCallback { get; set; }
+
+
 
 
         public ChessEngine()
@@ -24,7 +30,7 @@ namespace AutoChess
             StartStockfish();
         }
 
-        private void StartStockfish()
+        public void StartStockfish()
         {
             stockfishProcess = new Process
             {
@@ -50,10 +56,10 @@ namespace AutoChess
             stockfishInput.Flush();
         }
 
-        public async Task<string> GetBestMove()
+        public async Task<string> GetBestMove(int depth)
         {
             // Send the command to get the best move
-            stockfishInput.WriteLine("go depth 8");
+            stockfishInput.WriteLine($"go depth {depth}");
             stockfishInput.Flush();
 
             // Read the output from Stockfish
@@ -63,6 +69,11 @@ namespace AutoChess
                 if (output.StartsWith("bestmove"))
                 {
                     return output.Split(' ')[1];
+                }
+                else if (output.StartsWith("info") && output.Contains("score"))
+                {
+                    //return output;
+                    // Process the score information
                 }
             }
 
@@ -74,11 +85,13 @@ namespace AutoChess
             int moveCount = 0;
             const int maxMoves = 90;
             const int delay = 2000; // 2 seconds
+            int depth = 1;
 
             while (moveCount < maxMoves)
             {
                 LoadPosition(board.GetFEN());
-                var bestMove = await GetBestMove();
+                depth = board.IsWhiteTurn ? board.PlayerDepth : board.OpponentDepth;
+                var bestMove = await GetBestMove(depth);
                 Console.WriteLine($"Best move: {bestMove}");
 
                 // Apply the best move to the board
@@ -109,6 +122,26 @@ namespace AutoChess
 
         private void ApplyMove(Board board, string move)
         {
+            if (move == null)
+            {
+                return;
+            }
+
+            if (move == "(none)")
+            {
+                StopStockfish();
+
+                if (board.IsWhiteTurn)
+                {
+                    NotifyPlayerOutcome("Mate on board! Black Won");
+                }
+                else
+                {
+                    NotifyPlayerOutcome("Congratulations You have won");
+                }
+               
+            }
+
             // Convert the move from algebraic notation to board coordinates
             int startCol = move[0] - 'a';
             int startRow = 8 - (move[1] - '0');
@@ -155,14 +188,10 @@ namespace AutoChess
         private void NotifyPlayerOutcome(string message)
         {
             // Implement the logic to notify the player of the outcome
-            System.Windows.MessageBox.Show(message, "Game Outcome", System.Windows.MessageBoxButton.OK, System.Windows.MessageBoxImage.Information);
+
+            RoundOverCallback?.Invoke(message);
+
         }
 
-        private void IncreasePlayerBudget()
-        {
-            // Implement the logic to increase the player's budget
-            // Assuming you have a Player class with a Budget property
-            //Player.Budget += 100; // Increase budget by 100 as an example
-        }
     }
 }

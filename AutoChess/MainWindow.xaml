@@ -109,7 +109,7 @@
         </Grid>
 
         <!-- Store Area -->
-        <StackPanel Grid.Column="0" Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" Background="LightGray" Margin="5">
+        <StackPanel x:Name="StorePanel" Grid.Column="0" Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" Background="LightGray" Margin="5">
             <Button Width="100" Height="100" Margin="5" Click="OnStoreButtonClick">
                 <Image Source="pack://application:,,,/Images/WPawn.png" Stretch="Uniform" />
             </Button>
@@ -128,13 +128,13 @@
             <Button Width="100" Height="100" Margin="5" Click="OnStoreButtonClick">
                 <Image Source="pack://application:,,,/Images/WKing.png" Stretch="Uniform" />
             </Button>
+
         </StackPanel>
 
         <!-- Stats Panel -->
         <StackPanel Grid.Column="1" Grid.Row="0" Background="LightBlue" Margin="5,5,5,5" Grid.RowSpan="2">
             <TextBlock Text="Player Stats" FontSize="18" FontWeight="Bold" Margin="5" />
             <TextBlock x:Name="BudgetTextBlock" Text="Budget: $10" Margin="5" />
-            <TextBlock x:Name="JokersTextBlock" Text="Jokers Available: 3" Margin="5" />
             <TextBlock x:Name="EngineDepthTextBlock" Text="Engine Depth: 4" Margin="5" />
             <TextBlock x:Name="TurnTextBlock" Text="Turn: White" Margin="5" />
             <TextBlock x:Name="LastMoveTextBlock" Text="Last Move: " Margin="5" />

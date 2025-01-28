@@ -12,6 +12,8 @@ namespace AutoChess
 
         public bool IsWhiteTurn { get; private set; }
         public string LastMove { get; private set; }
+        public int PlayerDepth { get; set; }
+        public int OpponentDepth { get; set; }
 
         public Board()
         {

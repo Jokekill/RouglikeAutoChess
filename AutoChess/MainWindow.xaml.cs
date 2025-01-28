@@ -13,6 +13,9 @@ namespace AutoChess
         private string selectedPiece;
         private Button selectedButton;
         private int budget = 10;
+        private int engineDepth = 2;
+        private int oponentDepth = 12;
+
         private ChessEngine chessEngine;
         private Board board;
 
@@ -26,6 +29,7 @@ namespace AutoChess
             chessEngine = new ChessEngine();
             chessEngine.RefreshBoardCallback = RefreshChessBoard;
             chessEngine.HighlightMoveCallback = HighlightLastMove;
+            chessEngine.RoundOverCallback = RoundOver;
 
         }
 
@@ -66,6 +70,7 @@ namespace AutoChess
                     };
                     board.SetPieceAt(position.Row, position.Col, selectedPiece[1]);
                     UpdateBudget();
+
                 }
                 else if (button.Content != null)
                 {
@@ -73,6 +78,8 @@ namespace AutoChess
                     board.SetPieceAt(position.Row, position.Col, '\0');
                 }
             }
+
+            DeselectPiece();
         }
 
         private void OnStoreButtonClick(object sender, RoutedEventArgs e)
@@ -111,7 +118,7 @@ namespace AutoChess
                 case "WRook":
                     budget -= 5;
                     break;
-                case "WKnight":
+                case "WNight":
                     budget -= 3;
                     break;
                 case "WBishop":
@@ -125,13 +132,39 @@ namespace AutoChess
                     break;
             }
             BudgetTextBlock.Text = $"Budget: ${budget}";
+            UpdatePieceButtonStates();
+        }
+
+        private void UpdatePieceButtonStates()
+        {
+            foreach (var button in StorePanel.Children.OfType<Button>())
+            {
+                string piece = ((Image)button.Content).Source.ToString().Split('/').Last().Split('.').First();
+                int pieceCost = GetPieceCost(piece);
+                button.IsEnabled = budget >= pieceCost;
+                button.Background = button.IsEnabled ? Brushes.White : Brushes.DarkRed;
+            }
+        }
+
+        private int GetPieceCost(string piece)
+        {
+            return piece switch
+            {
+                "WPawn" => 1,
+                "WRook" => 5,
+                "WNight" => 3,
+                "WBishop" => 3,
+                "WQueen" => 9,
+                "WKing" => 0,
+                _ => int.MaxValue
+            };
         }
 
         private void UpdateStats()
         {
             BudgetTextBlock.Text = $"Budget: ${budget}";
-            JokersTextBlock.Text = $"Jokers Available: 3";
-            EngineDepthTextBlock.Text = $"Engine Depth: 4";
+   
+            EngineDepthTextBlock.Text = $"Engine Depth: {engineDepth} and Oponents engine will have depth: {oponentDepth}";
             TurnTextBlock.Text = board.IsWhiteTurn ? "Turn: White" : "Turn: Black";
             LastMoveTextBlock.Text = $"Last Move: {board.LastMove}";
         }
@@ -168,6 +201,7 @@ namespace AutoChess
                     }
                 }
             }
+
             UpdateStats();
         }
 
@@ -196,11 +230,13 @@ namespace AutoChess
                     }
                 }
             }
+            UpdateStats();
         }
 
         private void OnClearBoardButtonClick(object sender, RoutedEventArgs e)
         {
             board = new Board();
+
             RefreshChessBoard();
             ResetBoardColors();
             UpdateStats();
@@ -232,6 +268,13 @@ namespace AutoChess
 
         private void OnFightButtonClick(object sender, RoutedEventArgs e)
         {
+            string opponentPositionFilePath = "../../../Oponents/Oponent1.txt";
+            LoadOpponentPosition(opponentPositionFilePath);
+
+            board.PlayerDepth = engineDepth;
+            board.OpponentDepth = oponentDepth;
+
+            chessEngine.LoadPosition(board.GetFEN());
             string position = board.GetFEN();
             chessEngine.LoadPosition(position);
             chessEngine.PlayAsync(board);
@@ -243,6 +286,19 @@ namespace AutoChess
             string opponentPositionFilePath = "../../../Oponents/Oponent1.txt";
             LoadOpponentPosition(opponentPositionFilePath);
         }
+
+
+        private void RoundOver(string message)
+        {
+            MessageBox.Show(message, "Round Over", MessageBoxButton.OK, MessageBoxImage.Information);
+            board = new Board();
+            RefreshChessBoard();
+            ResetBoardColors();
+            budget += 15; 
+            UpdateStats();
+            UpdatePieceButtonStates();
+        }
+
     }
 
 }
