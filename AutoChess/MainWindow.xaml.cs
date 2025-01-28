@@ -30,6 +30,7 @@ namespace AutoChess
             chessEngine.RefreshBoardCallback = RefreshChessBoard;
             chessEngine.HighlightMoveCallback = HighlightLastMove;
             chessEngine.RoundOverCallback = RoundOver;
+            UpdateStats();
 
         }
 
@@ -239,6 +240,15 @@ namespace AutoChess
 
             RefreshChessBoard();
             ResetBoardColors();
+            UpdateStats();
+        }
+
+
+
+        private void OnBuyDepthButtonClick(object sender, RoutedEventArgs e)
+        {
+            budget -= 5;
+            engineDepth += 1;
             UpdateStats();
         }
 

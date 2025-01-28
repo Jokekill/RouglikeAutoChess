@@ -141,6 +141,7 @@
             <Button x:Name="FightButton" Content="FIGHT Next Opponent" Padding="20,10" Click="OnFightButtonClick" Margin="30,100,30,0" Height="98"/>
             <Button x:Name="LoadOpponentButton" Content="Load Opponent Position" Padding="20,10" Click="OnLoadOpponentButtonClick" Margin="30,10,30,0" Height="98"/>
             <Button x:Name="ClearBoardButton" Content="Clear Board" Padding="20,10" Click="OnClearBoardButtonClick" Margin="30,10,30,0" Height="98"/>
+            <Button x:Name="BuyDepthButton" Content="Buy 1 depth for 5$" Padding="20,10" Click="OnBuyDepthButtonClick" Margin="30,10,30,0" Height="98"/>
         </StackPanel>
     </Grid>
 </Window>
