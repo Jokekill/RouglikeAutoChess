@@ -278,6 +278,7 @@ namespace AutoChess
 
         private void OnFightButtonClick(object sender, RoutedEventArgs e)
         {
+            chessEngine.StartStockfish();
             string opponentPositionFilePath = "../../../Oponents/Oponent1.txt";
             LoadOpponentPosition(opponentPositionFilePath);
 
