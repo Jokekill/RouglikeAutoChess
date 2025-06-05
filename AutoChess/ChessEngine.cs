@@ -17,6 +17,9 @@ namespace AutoChess
         private StreamWriter stockfishInput;
         private StreamReader stockfishOutput;
 
+        private readonly string enginePath;
+        private readonly string? engineArguments;
+
         public Action RefreshBoardCallback { get; set; }
         public Action<string> RoundOverCallback { get; set; }
 
@@ -25,8 +28,14 @@ namespace AutoChess
 
 
 
-        public ChessEngine()
+        public ChessEngine() : this("../../../stockfish/stockfish.exe")
         {
+        }
+
+        public ChessEngine(string enginePath, string? arguments = null)
+        {
+            this.enginePath = enginePath;
+            this.engineArguments = arguments;
             StartStockfish();
         }
 
@@ -36,7 +45,8 @@ namespace AutoChess
             {
                 StartInfo = new ProcessStartInfo
                 {
-                    FileName = "../../../stockfish/stockfish.exe",
+                    FileName = enginePath,
+                    Arguments = engineArguments ?? string.Empty,
                     RedirectStandardInput = true,
                     RedirectStandardOutput = true,
                     UseShellExecute = false,
