@@ -5,6 +5,8 @@ VisualStudioVersion = 17.12.35521.163 d17.12
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoChess", "AutoChess\AutoChess.csproj", "{4C168B02-2E6B-4A37-869C-4FB1759C8349}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoChess.Tests", "AutoChess.Tests\AutoChess.Tests.csproj", "{898EB637-6372-4EA3-AF30-394445BB37A3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -14,8 +16,12 @@ Global
 		{4C168B02-2E6B-4A37-869C-4FB1759C8349}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{4C168B02-2E6B-4A37-869C-4FB1759C8349}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4C168B02-2E6B-4A37-869C-4FB1759C8349}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4C168B02-2E6B-4A37-869C-4FB1759C8349}.Release|Any CPU.Build.0 = Release|Any CPU
-	EndGlobalSection
+                {4C168B02-2E6B-4A37-869C-4FB1759C8349}.Release|Any CPU.Build.0 = Release|Any CPU
+                {898EB637-6372-4EA3-AF30-394445BB37A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+                {898EB637-6372-4EA3-AF30-394445BB37A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+                {898EB637-6372-4EA3-AF30-394445BB37A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+                {898EB637-6372-4EA3-AF30-394445BB37A3}.Release|Any CPU.Build.0 = Release|Any CPU
+        EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
