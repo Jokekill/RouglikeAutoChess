@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoChess.Tests", "AutoChes
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoChess.Core", "AutoChess.Core\AutoChess.Core.csproj", "{4CC29423-010B-45E2-B9F9-5354D9FE1FA4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoChess.Web", "AutoChess.Web\AutoChess.Web.csproj", "{22C835E4-EDAC-421A-8CCA-DBAA14A25B5A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{4CC29423-010B-45E2-B9F9-5354D9FE1FA4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4CC29423-010B-45E2-B9F9-5354D9FE1FA4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4CC29423-010B-45E2-B9F9-5354D9FE1FA4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{22C835E4-EDAC-421A-8CCA-DBAA14A25B5A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{22C835E4-EDAC-421A-8CCA-DBAA14A25B5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{22C835E4-EDAC-421A-8CCA-DBAA14A25B5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{22C835E4-EDAC-421A-8CCA-DBAA14A25B5A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
