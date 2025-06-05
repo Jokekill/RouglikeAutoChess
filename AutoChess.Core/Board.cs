@@ -112,11 +112,21 @@ namespace AutoChess
 
         public char GetPieceAt(int row, int col)
         {
+            if (row < 0 || row >= 8 || col < 0 || col >= 8)
+            {
+                return '\0';
+            }
+
             return board[row, col];
         }
 
         public void SetPieceAt(int row, int col, char piece)
         {
+            if (row < 0 || row >= 8 || col < 0 || col >= 8)
+            {
+                return;
+            }
+
             board[row, col] = piece;
         }
 
