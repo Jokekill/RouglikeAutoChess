@@ -139,7 +139,8 @@ namespace AutoChess
                 {
                     NotifyPlayerOutcome("Congratulations You have won");
                 }
-               
+
+                return;
             }
 
             // Convert the move from algebraic notation to board coordinates

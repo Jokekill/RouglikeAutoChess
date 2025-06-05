@@ -39,6 +39,15 @@ namespace AutoChess
 
         public void LoadFEN(string fen)
         {
+            // Clear the current board before loading a new position
+            for (int r = 0; r < 8; r++)
+            {
+                for (int c = 0; c < 8; c++)
+                {
+                    board[r, c] = '\0';
+                }
+            }
+
             string[] parts = fen.Split(' ');
             string[] rows = parts[0].Split('/');
 
