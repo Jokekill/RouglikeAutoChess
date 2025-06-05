@@ -47,4 +47,8 @@
     <Folder Include="Oponents\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\AutoChess.Core\AutoChess.Core.csproj" />
+  </ItemGroup>
+
 </Project>
