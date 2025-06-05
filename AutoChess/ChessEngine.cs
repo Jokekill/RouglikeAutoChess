@@ -28,11 +28,15 @@ namespace AutoChess
 
 
 
-        public ChessEngine() : this("../../../stockfish/stockfish.exe")
+        public ChessEngine() : this("../../../stockfish/stockfish.exe", null)
         {
         }
 
-        public ChessEngine(string enginePath, string? arguments = null)
+        public ChessEngine(string enginePath) : this(enginePath, null)
+        {
+        }
+
+        public ChessEngine(string enginePath, string? arguments)
         {
             this.enginePath = enginePath;
             this.engineArguments = arguments;
