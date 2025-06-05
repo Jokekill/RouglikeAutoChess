@@ -26,7 +26,7 @@ namespace AutoChess
 
 
 
-        public ChessEngine() : this("../../../stockfish/stockfish.exe", null)
+        public ChessEngine() : this("../AutoChess/stockfish/stockfish.exe", null)
         {
         }
 
