@@ -9,6 +9,7 @@ app.UseStaticFiles();
 app.UseCors(x => x.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
 
 var board = new Board();
+board.LoadFEN("rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w - - 0 1");
 var engine = new ChessEngine();
 
 string GenerateRandomPosition()
